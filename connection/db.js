@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv"
 
 const Connection = async()=>{
     try {
-        const URL =  `mongodb+srv://inshort:inshort@cluster0.vhsdm.mongodb.net/inshort?retryWrites=true&w=majority`;
+        dotenv.config();
+        const URL =  process.env.DB_URL;
         await mongoose.connect(URL,{useNewUrlParser:true});
         console.log("Database connected successfully!");
     } catch (error) {
